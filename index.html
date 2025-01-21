@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobilitätsfrage in AR</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.2/aframe/build/aframe-ar.min.js"></script>
+  </head>
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene embedded arjs>
+      <!-- Kamera -->
+      <a-entity camera></a-entity>
+
+      <!-- Hiro-Marker -->
+      <a-marker preset="hiro">
+        <!-- Fahrradmodell -->
+        <a-entity
+          id="fahrrad"
+          position="-1 0 0"
+          gltf-model="cycle_gltf/scene.gltf"
+          scale="2 2 2"
+          onclick="selectOption('Fahrrad', 0)"
+        ></a-entity>
+
+        <!-- ÖPNV -->
+        <a-entity
+          id="oepnv"
+          position="0 0 0"
+          text="value: ÖPNV; color: yellow; align: center;"
+          onclick="selectOption('ÖPNV', 0.5)"
+        ></a-entity>
+
+        <!-- Auto -->
+        <a-entity
+          id="auto"
+          position="1 0 0"
+          gltf-model="car_gltf/scene.gltf"
+          scale="2 2 2"
+          onclick="selectOption('Auto', 2.5)"
+        ></a-entity>
+
+        <!-- Feedback -->
+        <a-entity
+          id="feedback"
+          position="0 1.5 0"
+          text="value: Wähle eine Option, um deinen CO₂-Ausstoß zu sehen.; color: black; align: center;"
+        ></a-entity>
+      </a-marker>
+    </a-scene>
+    <script src="script.js"></script>
+  </body>
+</html>
