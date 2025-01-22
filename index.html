@@ -6,8 +6,14 @@
     <title>Mobilitätsfrage in AR</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.2/aframe/build/aframe-ar.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
   </head>
-  <body style="margin: 0; overflow: hidden;">
+  <body>
     <a-scene embedded arjs>
       <!-- Kamera -->
       <a-entity camera></a-entity>
@@ -18,21 +24,48 @@
         <a-entity
           id="fahrrad"
           position="-1 0 0"
-          gltf-model="./scene.gltf"
-          scale="5 5 5"
+          gltf-model="/scene.gltf"
+          scale="3 3 3"
           onclick="selectOption('Fahrrad', 0)"
         ></a-entity>
 
+        <!-- ÖPNV -->
+        <a-entity
+          id="oepnv"
+          position="0 0 0"
+          text="value: ÖPNV; color: yellow; align: center;"
+          onclick="selectOption('ÖPNV', 0.5)"
+        ></a-entity>
+
+        <!-- Auto -->
+        <a-entity
+          id="auto"
+          position="1 0 0"
+          gltf-model="car_gltf/scene.gltf"
+          scale="2 2 2"
+          onclick="selectOption('Auto', 2.5)"
+        ></a-entity>
+
         <!-- Feedback -->
-       <a-entity
-  id="feedback"
-  position="0 2 0"
-  scale="2 2 2"
-  text="value: Wähle eine Option, um deinen CO₂-Ausstoß zu sehen.; color: black; align: center;"
-></a-entity>
-        
+        <a-entity
+          id="feedback"
+          position="0 1.5 0"
+          text="value: Wähle eine Option, um deinen CO₂-Ausstoß zu sehen.; color: black; align: center;"
+        ></a-entity>
       </a-marker>
     </a-scene>
-    <script src="script.js"></script>
+
+    <script>
+      // JavaScript-Funktion zur Auswahl einer Option
+      function selectOption(option, co2Value) {
+        console.log(`Option ${option} wurde ausgewählt mit CO₂-Wert: ${co2Value}`);
+
+        const feedback = document.querySelector("#feedback");
+        feedback.setAttribute(
+          "text",
+          `value: Du hast ${option} gewählt. CO₂-Ausstoß: ${co2Value} kg.; color: black; align: center;`
+        );
+      }
+    </script>
   </body>
 </html>
