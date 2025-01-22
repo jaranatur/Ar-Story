@@ -9,6 +9,9 @@
   </head>
   <body style="margin: 0; overflow: hidden;">
     <a-scene embedded arjs>
+      <!-- Kamera -->
+      <a-entity camera></a-entity>
+
       <!-- Hiro-Marker -->
       <a-marker preset="hiro">
         <!-- Fahrradmodell -->
@@ -32,7 +35,7 @@
         <a-entity
           id="auto"
           position="1 0 0"
-          gltf-model="car_gltf/scene.gltf"
+          gltf-model="scene.gltf"
           scale="2 2 2"
           onclick="selectOption('Auto', 2.5)"
         ></a-entity>
@@ -44,12 +47,7 @@
           text="value: Wähle eine Option, um deinen CO₂-Ausstoß zu sehen.; color: black; align: center;"
         ></a-entity>
       </a-marker>
-
-      <!-- Umgebung -->
-      <a-entity camera position="0 0 0"></a-entity>
     </a-scene>
-
-    <!-- Verlinkung zur JS-Datei -->
     <script src="script.js"></script>
   </body>
 </html>
