@@ -27,9 +27,7 @@
           geometry="primitive: plane; height: 1; width: 1.5"
           material="color: white; opacity: 0.9"
           position="0 1 0"
-          text="value: Berechne deinen CO₂-Ausstoß! \nDrücke Start, um das Spiel zu beginnen.; color: black; align: center; wrapCount: 20"
-          event-set__click="visible: false"
-          class="clickable"
+          text="value: Berechne deinen CO₂-Ausstoß! \nDrücke Start, um das Spiel zu beginnen.; color: black; align: center; wrapCount: 20; font: mozillavr"
         ></a-entity>
 
         <!-- Start-Button -->
@@ -38,9 +36,18 @@
           geometry="primitive: plane; height: 0.3; width: 0.8"
           material="color: blue"
           position="0 0.5 0"
-          text="value: Start; color: white; align: center"
-          class="clickable"
+          text="value: Start; color: white; align: center; font: mozillavr"
           onclick="startQuiz()"
+        ></a-entity>
+
+        <!-- Frage (Wie kommst du zur Uni?) -->
+        <a-entity
+          id="question"
+          geometry="primitive: plane; height: 0.5; width: 2"
+          material="color: lightyellow; opacity: 0.9"
+          position="0 1 0"
+          text="value: Wie kommst du zur Uni?; color: black; align: center; wrapCount: 25; font: mozillavr"
+          visible="false"
         ></a-entity>
 
         <!-- Fahrradmodell -->
@@ -53,22 +60,24 @@
           onclick="selectOption('Fahrrad', 0)"
         ></a-entity>
 
-        <!-- Bus/ÖPNV (Platzhalter) -->
+        <!-- Bus/ÖPNV -->
         <a-entity
           id="oepnv"
           position="0 0 0"
-          text="value: ÖPNV; color: yellow; align: center;"
-          scale="2 2 2"
+          geometry="primitive: plane; height: 0.3; width: 0.6"
+          material="color: yellow"
+          text="value: Bus/ÖPNV; color: black; align: center; font: mozillavr"
           visible="false"
-          onclick="selectOption('ÖPNV', 0.5)"
+          onclick="selectOption('Bus/ÖPNV', 0.5)"
         ></a-entity>
 
-        <!-- Auto (Platzhalter) -->
+        <!-- Auto -->
         <a-entity
           id="auto"
           position="1 0 0"
-          text="value: Auto; color: red; align: center;"
-          scale="2 2 2"
+          geometry="primitive: plane; height: 0.3; width: 0.6"
+          material="color: red"
+          text="value: Auto; color: white; align: center; font: mozillavr"
           visible="false"
           onclick="selectOption('Auto', 2.5)"
         ></a-entity>
@@ -78,6 +87,15 @@
           id="feedback"
           position="0 1.5 0"
           text="value: Wähle eine Option, um deinen CO₂-Ausstoß zu sehen.; color: black; align: center;"
+          visible="false"
+        ></a-entity>
+
+        <!-- Diagramm -->
+        <a-entity
+          id="diagram"
+          geometry="primitive: plane; height: 0.8; width: 1.5"
+          material="color: lightblue; opacity: 0.9"
+          position="0 1 0"
           visible="false"
         ></a-entity>
       </a-marker>
