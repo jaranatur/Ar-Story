@@ -1,17 +1,29 @@
+// Event-Listener für den Start-Button hinzufügen
+document.addEventListener("DOMContentLoaded", function () {
+  const startButton = document.getElementById("start-button");
+
+  // Button klickbar machen
+  if (startButton) {
+    startButton.addEventListener("click", function () {
+      startQuiz();
+    });
+  }
+});
+
 // Funktion zum Starten des Quiz
 function startQuiz() {
-  // Versteckt den Start-Screen
+  console.log("Quiz wird gestartet...");
   const startScreen = document.getElementById("start-screen");
   if (startScreen) {
-    startScreen.style.display = "none";
+    startScreen.style.display = "none"; // Versteckt den Startbildschirm
   }
 
-  // Zeigt die Transportmittel-Optionen an
+  // Zeige die Transportmittel
   document.querySelector("#fahrrad").setAttribute("visible", "true");
   document.querySelector("#oepnv").setAttribute("visible", "true");
   document.querySelector("#auto").setAttribute("visible", "true");
 
-  // Zeigt das Feedback-Feld an
+  // Zeige das Feedback
   document.querySelector("#feedback").setAttribute("visible", "true");
 }
 
@@ -25,24 +37,4 @@ function selectOption(option, co2Value) {
     "text",
     `value: Du hast ${option} gewählt. CO₂-Ausstoß: ${co2Value} kg.; color: black; align: center;`
   );
-
-  // Beispiel: Diagramm oder Visualisierung könnte hier ausgelöst werden
-  showDiagram(option, co2Value);
 }
-
-// Funktion zum Anzeigen eines Diagramms oder einer Visualisierung
-function showDiagram(option, co2Value) {
-  console.log(`Diagramm anzeigen für ${option} mit CO₂-Wert ${co2Value}`);
-  // Platz für Diagramm-Logik oder zusätzliche Interaktionen
-}
-
-// Event-Listener für Klicks und Touches hinzufügen (zusätzliche Sicherheit für AR)
-document.querySelectorAll("a-entity").forEach((entity) => {
-  entity.addEventListener("click", (e) => {
-    console.log(`Klick erkannt auf: ${e.target.id}`);
-  });
-
-  entity.addEventListener("touchstart", (e) => {
-    console.log(`Touch erkannt auf: ${e.target.id}`);
-  });
-});

@@ -11,8 +11,6 @@
         margin: 0;
         overflow: hidden;
       }
-
-      /* Start-Screen */
       #start-screen {
         position: absolute;
         top: 0;
@@ -28,24 +26,29 @@
         font-family: Arial, sans-serif;
         z-index: 10;
       }
-
       #start-screen button {
         padding: 10px 20px;
         font-size: 16px;
         margin-top: 20px;
         cursor: pointer;
-      }
-
-      /* Leinwand für die Frage */
-      .question-board {
-        width: 2.5;
-        height: 1;
+        background-color: #007bff;
         color: white;
-        background: rgba(0, 0, 0, 0.7);
+        border: none;
+        border-radius: 5px;
+      }
+      #start-screen button:hover {
+        background-color: #0056b3;
       }
     </style>
   </head>
   <body>
+    <!-- Start-Screen -->
+    <div id="start-screen">
+      <h1>Berechne deinen CO₂-Ausstoß!</h1>
+      <p>Drücke Start, um das Spiel zu beginnen.</p>
+      <button id="start-button">Start</button>
+    </div>
+
     <!-- A-Frame Szene -->
     <a-scene embedded arjs>
       <!-- Kamera -->
@@ -53,23 +56,6 @@
 
       <!-- Hiro-Marker -->
       <a-marker preset="hiro">
-        <!-- Start-Screen -->
-        <a-entity
-          id="start-board"
-          geometry="primitive: plane; height: 1; width: 2.5"
-          material="color: #000000; opacity: 0.8"
-          position="0 1 0"
-          text="value: Berechne deinen CO₂-Ausstoß!; color: white; align: center; width: 4"
-        ></a-entity>
-        <a-entity
-          id="start-button"
-          geometry="primitive: plane; height: 0.5; width: 1"
-          material="color: #007bff"
-          position="0 0.5 0"
-          text="value: Start; color: white; align: center; width: 2"
-          onclick="startQuiz()"
-        ></a-entity>
-
         <!-- Fahrradmodell -->
         <a-entity
           id="fahrrad"
@@ -77,7 +63,8 @@
           gltf-model="models/bike/scene.gltf"
           scale="2 2 2"
           visible="false"
-          event-set__click="material.color: green"
+          geometry="primitive: box"
+          material="opacity: 0; transparent: true"
           onclick="selectOption('Fahrrad', 0)"
         ></a-entity>
 
@@ -86,9 +73,10 @@
           id="oepnv"
           position="0 0 0"
           text="value: ÖPNV; color: yellow; align: center;"
+          geometry="primitive: box"
+          material="opacity: 0; transparent: true"
           scale="2 2 2"
           visible="false"
-          event-set__click="material.color: blue"
           onclick="selectOption('ÖPNV', 0.5)"
         ></a-entity>
 
@@ -97,9 +85,10 @@
           id="auto"
           position="1 0 0"
           text="value: Auto; color: red; align: center;"
+          geometry="primitive: box"
+          material="opacity: 0; transparent: true"
           scale="2 2 2"
           visible="false"
-          event-set__click="material.color: red"
           onclick="selectOption('Auto', 2.5)"
         ></a-entity>
 
@@ -113,42 +102,6 @@
       </a-marker>
     </a-scene>
 
-    <script>
-      // Funktion zum Starten des Quiz
-      function startQuiz() {
-        // Verstecke den Start-Screen
-        document.querySelector("#start-board").setAttribute("visible", "false");
-        document.querySelector("#start-button").setAttribute("visible", "false");
-
-        // Zeige die Transportmittel-Optionen
-        document.querySelector("#fahrrad").setAttribute("visible", "true");
-        document.querySelector("#oepnv").setAttribute("visible", "true");
-        document.querySelector("#auto").setAttribute("visible", "true");
-
-        // Zeige Feedback
-        document.querySelector("#feedback").setAttribute("visible", "true");
-      }
-
-      // Funktion zur Verarbeitung der Auswahl einer Option
-      function selectOption(option, co2Value) {
-        console.log(`Option ${option} wurde ausgewählt mit CO₂-Wert: ${co2Value}`);
-
-        const feedback = document.querySelector("#feedback");
-        feedback.setAttribute(
-          "text",
-          `value: Du hast ${option} gewählt. CO₂-Ausstoß: ${co2Value} kg.; color: black; align: center;`
-        );
-      }
-
-      // Touch- und Click-Listener zur Sicherheit hinzufügen
-      document.querySelectorAll("a-entity").forEach((entity) => {
-        entity.addEventListener("click", (e) => {
-          console.log(`Klick erkannt auf: ${e.target.id}`);
-        });
-        entity.addEventListener("touchstart", (e) => {
-          console.log(`Touch erkannt auf: ${e.target.id}`);
-        });
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
