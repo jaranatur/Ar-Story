@@ -26,3 +26,4 @@ function startQuiz() {
   document.querySelector("#auto").setAttribute("visible", "true");
   */
 }
+
