@@ -25,10 +25,18 @@
         <a-entity
           id="start-screen"
           geometry="primitive: plane; height: 1.5; width: 2"
-          material="color: #c6d9c9; opacity: 0.9" <!-- Hier die neue Farbe -->
+          material="color: #c6d9c9; opacity: 0.9"
           position="0 1 0"
-          text="value: Berechne deinen CO₂-Ausstoß!\nDrücke hier, um zu starten.; color: white; align: center; wrapCount: 25; font: mozillavr"
-        ></a-entity>
+        >
+          <a-text
+            value="Berechne deinen CO₂-Ausstoß!\nDrücke hier, um zu starten."
+            color="white"
+            align="center"
+            wrap-count="30"
+            position="0 0 0.1"
+            font="mozillavr"
+          ></a-text>
+        </a-entity>
 
         <!-- Frage: Wie kommst du zur Uni? -->
         <!-- Auskommentiert, da irrelevant für den Startbildschirm -->
