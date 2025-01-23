@@ -27,43 +27,39 @@
           geometry="primitive: plane; height: 1.5; width: 2"
           material="color: #c6d9c9; opacity: 0.9"
           position="0 1 0"
+          scale="1 1 1"
         >
           <!-- Begrüßungstext -->
           <a-text
-            value="Berechne deinen CO&#8322;-Aussto&szlig;!"
+            value="Berechne deinen\nCO2-Ausstoss!"
             color="white"
             align="center"
-            wrap-count="20" <!-- Engerer Zeilenumbruch, um den Text zu beschränken -->
-            position="0 0.6 0.1" <!-- Text höher positioniert -->
-            font="mozillavr"
-            scale="0.3 0.3 0.2" <!-- Schriftgröße stark verkleinert -->
+            wrap-count="20"
+            position="0 0.6 0.1"
+            font="https://cdn.aframe.io/fonts/DejaVu-sdf.fnt"
+            scale="0.3 0.3 0.3"
           ></a-text>
 
-          <!-- START-Button -->
-          <a-entity
-            id="start-button"
-            geometry="primitive: plane; height: 0.2; width: 0.5" <!-- Kleine, zentrierte Plane -->
-            material="color: #7f8b81"
-            position="0 -0.5 0.5" <!-- Button tiefer positioniert -->
-            text="value: START; color: white; align: center; font: mozillavr; scale: 2 2 2"
-          ></a-entity>
+          <!-- Erklärungstext -->
+          <a-text
+            value="Klicke HIER, um die Berechnung zu beginnen."
+            color="#5d555c"
+            align="center"
+            wrap-count="30"
+            position="0 0.1 0.1"
+            font="https://cdn.aframe.io/fonts/DejaVu-sdf.fnt"
+            scale="0.3 0.3 0.3"
+            class="clickable"
+          ></a-text>
         </a-entity>
-
-        <!-- Frage: Wie kommst du zur Uni? -->
-        <!-- Auskommentiert, da irrelevant für den Startbildschirm -->
-        <!--
-        <a-entity
-          id="question"
-          geometry="primitive: plane; height: 0.7; width: 2"
-          material="color: lightyellow; opacity: 0.9"
-          position="0 1 0"
-          text="value: Wie kommst du zur Uni?; color: black; align: center; wrapCount: 30; font: mozillavr"
-          visible="false"
-        ></a-entity>
-        -->
       </a-marker>
     </a-scene>
 
-    <script src="script.js"></script>
+    <script>
+      // Beispiel: Event für den Klick auf den Erklärungstext
+      document.querySelector(".clickable").addEventListener("click", () => {
+        alert("Berechnung beginnt!"); // Hier kannst du die nächste Aktion starten
+      });
+    </script>
   </body>
 </html>
