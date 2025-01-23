@@ -28,14 +28,24 @@
           material="color: #c6d9c9; opacity: 0.9"
           position="0 1 0"
         >
+          <!-- Begrüßungstext -->
           <a-text
-            value="Berechne deinen CO₂-Ausstoß!\nDrücke hier, um zu starten."
+            value="Berechne deinen CO₂-Ausstoß!"
             color="white"
             align="center"
             wrap-count="30"
-            position="0 0 0.1"
+            position="0 0.4 0.1"
             font="mozillavr"
           ></a-text>
+
+          <!-- START-Button -->
+          <a-entity
+            id="start-button"
+            geometry="primitive: plane; height: 0.3; width: 0.8"
+            material="color: green"
+            position="0 -0.2 0.1"
+            text="value: START; color: white; align: center; font: mozillavr"
+          ></a-entity>
         </a-entity>
 
         <!-- Frage: Wie kommst du zur Uni? -->
@@ -47,58 +57,6 @@
           material="color: lightyellow; opacity: 0.9"
           position="0 1 0"
           text="value: Wie kommst du zur Uni?; color: black; align: center; wrapCount: 30; font: mozillavr"
-          visible="false"
-        ></a-entity>
-        -->
-
-        <!-- Fahrradmodell -->
-        <!-- Auskommentiert, da irrelevant für den Startbildschirm -->
-        <!--
-        <a-entity
-          id="fahrrad"
-          position="-1 0.5 0"
-          gltf-model="models/bike/scene.gltf"
-          scale="2 2 2"
-          visible="false"
-          onclick="selectOption('Fahrrad', 0)"
-        ></a-entity>
-        -->
-
-        <!-- Bus/ÖPNV -->
-        <!-- Auskommentiert, da irrelevant für den Startbildschirm -->
-        <!--
-        <a-entity
-          id="oepnv"
-          position="0 0.5 0"
-          geometry="primitive: plane; height: 0.4; width: 0.8"
-          material="color: yellow"
-          text="value: Bus/ÖPNV; color: black; align: center; font: mozillavr"
-          visible="false"
-          onclick="selectOption('Bus/ÖPNV', 0.5)"
-        ></a-entity>
-        -->
-
-        <!-- Auto -->
-        <!-- Auskommentiert, da irrelevant für den Startbildschirm -->
-        <!--
-        <a-entity
-          id="auto"
-          position="1 0.5 0"
-          geometry="primitive: plane; height: 0.4; width: 0.8"
-          material="color: red"
-          text="value: Auto; color: white; align: center; font: mozillavr"
-          visible="false"
-          onclick="selectOption('Auto', 2.5)"
-        ></a-entity>
-        -->
-
-        <!-- Feedback -->
-        <!-- Auskommentiert, da irrelevant für den Startbildschirm -->
-        <!--
-        <a-entity
-          id="feedback"
-          position="0 1.5 0"
-          text="value: Wähle eine Option, um deinen CO₂-Ausstoß zu sehen.; color: black; align: center;"
           visible="false"
         ></a-entity>
         -->
