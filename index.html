@@ -17,7 +17,9 @@
     <!-- A-Frame Szene -->
     <a-scene embedded arjs>
       <!-- Kamera -->
-      <a-entity camera></a-entity>
+      <a-entity camera look-controls>
+        <a-cursor></a-cursor>
+      </a-entity>
 
       <!-- Hiro-Marker -->
       <a-marker preset="hiro">
@@ -31,21 +33,9 @@
         >
           <!-- Begrüßungstext -->
           <a-text
-            id="greeting-text"
-            value="Berechne deinen\nCO2-Ausstoss!"
-            color="white"
-            align="center"
-            wrap-count="20"
-            position="0 0.6 0.1"
-            font="https://cdn.aframe.io/fonts/DejaVu-sdf.fnt"
-            scale="0.3 0.3 0.3"
-          ></a-text>
-
-          <!-- Erklärungstext -->
-          <a-text
             id="clickable-text"
             value="Klicke HIER, um die Berechnung zu beginnen."
-            color="#5d555c"
+            color="#800080"
             align="center"
             wrap-count="30"
             position="0 0.1 0.1"
@@ -55,66 +45,27 @@
           ></a-text>
         </a-entity>
 
-        <!-- Frage: Wie kommst du zur Uni? -->
+        <!-- Frage -->
         <a-entity
           id="question"
           geometry="primitive: plane; height: 0.7; width: 2"
-          material="color: #f4f4f4; opacity: 0.9"
+          material="color: #ffffe0; opacity: 0.9"
           position="0 1 0"
           visible="false"
         >
           <a-text
             value="Wie kommst du zur Uni?"
-            color="#333333"
+            color="#000000"
             align="center"
             wrap-count="30"
-            position="0 0.3 0.1"
+            position="0 0.2 0.1"
             font="https://cdn.aframe.io/fonts/DejaVu-sdf.fnt"
             scale="0.3 0.3 0.3"
           ></a-text>
-
-          <!-- Option: Fahrrad -->
-          <a-entity
-            id="bike-option"
-            geometry="primitive: plane; height: 0.2; width: 0.6"
-            material="color: #87CEEB"
-            position="-1 0 0.1"
-            text="value: Fahrrad; color: black; align: center; font: mozillavr"
-            class="clickable"
-          ></a-entity>
-
-          <!-- Option: Bus -->
-          <a-entity
-            id="bus-option"
-            geometry="primitive: plane; height: 0.2; width: 0.6"
-            material="color: #FFD700"
-            position="0 0 0.1"
-            text="value: Bus; color: black; align: center; font: mozillavr"
-            class="clickable"
-          ></a-entity>
-
-          <!-- Option: Auto -->
-          <a-entity
-            id="car-option"
-            geometry="primitive: plane; height: 0.2; width: 0.6"
-            material="color: #FF6347"
-            position="1 0 0.1"
-            text="value: Auto; color: black; align: center; font: mozillavr"
-            class="clickable"
-          ></a-entity>
         </a-entity>
       </a-marker>
     </a-scene>
 
-    <script>
-      // Event-Listener für "Klicke HIER"
-      document.querySelector("#clickable-text").addEventListener("click", () => {
-        // Begrüßungstext ausblenden
-        document.querySelector("#start-screen").setAttribute("visible", "false");
-
-        // Erste Frage anzeigen
-        document.querySelector("#question").setAttribute("visible", "true");
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
