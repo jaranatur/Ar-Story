@@ -1,17 +1,17 @@
+// Start-Button Event Listener
+document.getElementById("start-button").addEventListener("click", startQuiz);
+
 // Funktion zum Starten des Quiz
 function startQuiz() {
   // Versteckt den Start-Screen
-  const startScreen = document.getElementById("start-screen");
-  if (startScreen) {
-    startScreen.style.display = "none";
-  }
+  document.getElementById("start-screen").style.display = "none";
 
-  // Zeigt die Transportmittel-Optionen an
+  // Zeige alle Optionen
   document.querySelector("#fahrrad").setAttribute("visible", "true");
   document.querySelector("#oepnv").setAttribute("visible", "true");
   document.querySelector("#auto").setAttribute("visible", "true");
 
-  // Zeigt das Feedback-Feld an
+  // Zeige Feedback
   document.querySelector("#feedback").setAttribute("visible", "true");
 }
 
@@ -19,7 +19,6 @@ function startQuiz() {
 function selectOption(option, co2Value) {
   console.log(`Option ${option} wurde ausgewählt mit CO₂-Wert: ${co2Value}`);
 
-  // Ändert den Text des Feedbacks
   const feedback = document.querySelector("#feedback");
   feedback.setAttribute(
     "text",
