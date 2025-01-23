@@ -24,14 +24,14 @@
         <!-- Startbildschirm -->
         <a-entity
           id="start-screen"
-          geometry="primitive: box; depth: 0.1; height: 1.5; width: 2"
+          geometry="primitive: plane; height: 1.5; width: 2"
           material="color: blue; opacity: 0.9"
           position="0 1 0"
-          text="value: Berechne deinen CO₂-Ausstoß!\nDrücke Start, um zu beginnen.; color: white; align: center; wrapCount: 25; font: mozillavr"
+          text="value: Berechne deinen CO₂-Ausstoß!\nDrücke hier, um zu starten.; color: white; align: center; wrapCount: 25; font: mozillavr"
           onclick="startQuiz()"
         ></a-entity>
 
-        <!-- Frage (Wie kommst du zur Uni?) -->
+        <!-- Frage: Wie kommst du zur Uni? -->
         <a-entity
           id="question"
           geometry="primitive: plane; height: 0.7; width: 2"
