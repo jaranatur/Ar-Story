@@ -1,8 +1,0 @@
-Model Information:
-* title:	2017 Volkswagen Polo Sedan
-* source:	https://sketchfab.com/3d-models/2017-volkswagen-polo-sedan-290a03e4dbfc4e5ea351efa4f89b38b7
-* author:	KOElkastasbers (https://sketchfab.com/koelkastasbers)
-
-Model License:
-* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
-* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
