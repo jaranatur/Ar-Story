@@ -24,27 +24,27 @@
         <!-- Startbildschirm -->
         <a-entity
           id="start-screen"
-          geometry="primitive: box; depth: 0.1; height: 1; width: 1.5"
+          geometry="primitive: box; depth: 0.1; height: 1.5; width: 2"
           material="color: blue; opacity: 0.9"
           position="0 1 0"
-          text="value: Berechne deinen CO₂-Ausstoß! \nDrücke Start, um das Spiel zu beginnen.; color: white; align: center; wrapCount: 20; font: mozillavr"
+          text="value: Berechne deinen CO₂-Ausstoß!\nDrücke Start, um zu beginnen.; color: white; align: center; wrapCount: 25; font: mozillavr"
           onclick="startQuiz()"
         ></a-entity>
 
         <!-- Frage (Wie kommst du zur Uni?) -->
         <a-entity
           id="question"
-          geometry="primitive: plane; height: 0.5; width: 2"
+          geometry="primitive: plane; height: 0.7; width: 2"
           material="color: lightyellow; opacity: 0.9"
           position="0 1 0"
-          text="value: Wie kommst du zur Uni?; color: black; align: center; wrapCount: 25; font: mozillavr"
+          text="value: Wie kommst du zur Uni?; color: black; align: center; wrapCount: 30; font: mozillavr"
           visible="false"
         ></a-entity>
 
         <!-- Fahrradmodell -->
         <a-entity
           id="fahrrad"
-          position="-1 0 0"
+          position="-1 0.5 0"
           gltf-model="models/bike/scene.gltf"
           scale="2 2 2"
           visible="false"
@@ -54,8 +54,8 @@
         <!-- Bus/ÖPNV -->
         <a-entity
           id="oepnv"
-          position="0 0 0"
-          geometry="primitive: plane; height: 0.3; width: 0.6"
+          position="0 0.5 0"
+          geometry="primitive: plane; height: 0.4; width: 0.8"
           material="color: yellow"
           text="value: Bus/ÖPNV; color: black; align: center; font: mozillavr"
           visible="false"
@@ -65,8 +65,8 @@
         <!-- Auto -->
         <a-entity
           id="auto"
-          position="1 0 0"
-          geometry="primitive: plane; height: 0.3; width: 0.6"
+          position="1 0.5 0"
+          geometry="primitive: plane; height: 0.4; width: 0.8"
           material="color: red"
           text="value: Auto; color: white; align: center; font: mozillavr"
           visible="false"
@@ -78,15 +78,6 @@
           id="feedback"
           position="0 1.5 0"
           text="value: Wähle eine Option, um deinen CO₂-Ausstoß zu sehen.; color: black; align: center;"
-          visible="false"
-        ></a-entity>
-
-        <!-- Diagramm -->
-        <a-entity
-          id="diagram"
-          geometry="primitive: plane; height: 0.8; width: 1.5"
-          material="color: lightblue; opacity: 0.9"
-          position="0 1 0"
           visible="false"
         ></a-entity>
       </a-marker>
