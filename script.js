@@ -1,29 +1,19 @@
-// Event-Listener für den Start-Button hinzufügen
-document.addEventListener("DOMContentLoaded", function () {
-  const startButton = document.getElementById("start-button");
-
-  // Button klickbar machen
-  if (startButton) {
-    startButton.addEventListener("click", function () {
-      startQuiz();
-    });
-  }
-});
-
-// Funktion zum Starten des Quiz
+// Funktion zum Starten des Spiels
 function startQuiz() {
-  console.log("Quiz wird gestartet...");
-  const startScreen = document.getElementById("start-screen");
-  if (startScreen) {
-    startScreen.style.display = "none"; // Versteckt den Startbildschirm
-  }
+  console.log("Spiel wird gestartet...");
 
-  // Zeige die Transportmittel
+  // Versteckt den Startbildschirm und den Start-Button
+  const startScreen = document.querySelector("#start-screen");
+  const startButton = document.querySelector("#start-button");
+  if (startScreen) startScreen.setAttribute("visible", "false");
+  if (startButton) startButton.setAttribute("visible", "false");
+
+  // Zeigt die Transportmittel an
   document.querySelector("#fahrrad").setAttribute("visible", "true");
   document.querySelector("#oepnv").setAttribute("visible", "true");
   document.querySelector("#auto").setAttribute("visible", "true");
 
-  // Zeige das Feedback
+  // Zeigt das Feedback-Feld an
   document.querySelector("#feedback").setAttribute("visible", "true");
 }
 

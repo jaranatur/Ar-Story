@@ -11,44 +11,9 @@
         margin: 0;
         overflow: hidden;
       }
-      #start-screen {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        font-family: Arial, sans-serif;
-        z-index: 10;
-      }
-      #start-screen button {
-        padding: 10px 20px;
-        font-size: 16px;
-        margin-top: 20px;
-        cursor: pointer;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-      }
-      #start-screen button:hover {
-        background-color: #0056b3;
-      }
     </style>
   </head>
   <body>
-    <!-- Start-Screen -->
-    <div id="start-screen">
-      <h1>Berechne deinen CO₂-Ausstoß!</h1>
-      <p>Drücke Start, um das Spiel zu beginnen.</p>
-      <button id="start-button">Start</button>
-    </div>
-
     <!-- A-Frame Szene -->
     <a-scene embedded arjs>
       <!-- Kamera -->
@@ -56,6 +21,28 @@
 
       <!-- Hiro-Marker -->
       <a-marker preset="hiro">
+        <!-- Startbildschirm auf Leinwand -->
+        <a-entity
+          id="start-screen"
+          geometry="primitive: plane; height: 1; width: 1.5"
+          material="color: white; opacity: 0.9"
+          position="0 1 0"
+          text="value: Berechne deinen CO₂-Ausstoß! \nDrücke Start, um das Spiel zu beginnen.; color: black; align: center; wrapCount: 20"
+          event-set__click="visible: false"
+          class="clickable"
+        ></a-entity>
+
+        <!-- Start-Button -->
+        <a-entity
+          id="start-button"
+          geometry="primitive: plane; height: 0.3; width: 0.8"
+          material="color: blue"
+          position="0 0.5 0"
+          text="value: Start; color: white; align: center"
+          class="clickable"
+          onclick="startQuiz()"
+        ></a-entity>
+
         <!-- Fahrradmodell -->
         <a-entity
           id="fahrrad"
@@ -63,8 +50,6 @@
           gltf-model="models/bike/scene.gltf"
           scale="2 2 2"
           visible="false"
-          geometry="primitive: box"
-          material="opacity: 0; transparent: true"
           onclick="selectOption('Fahrrad', 0)"
         ></a-entity>
 
@@ -73,8 +58,6 @@
           id="oepnv"
           position="0 0 0"
           text="value: ÖPNV; color: yellow; align: center;"
-          geometry="primitive: box"
-          material="opacity: 0; transparent: true"
           scale="2 2 2"
           visible="false"
           onclick="selectOption('ÖPNV', 0.5)"
@@ -85,8 +68,6 @@
           id="auto"
           position="1 0 0"
           text="value: Auto; color: red; align: center;"
-          geometry="primitive: box"
-          material="opacity: 0; transparent: true"
           scale="2 2 2"
           visible="false"
           onclick="selectOption('Auto', 2.5)"
