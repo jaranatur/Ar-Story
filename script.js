@@ -2,14 +2,13 @@
 function startQuiz() {
   console.log("Spiel wird gestartet...");
 
-  // Versteckt den Startbildschirm und den Start-Button
+  // Versteckt den Startbildschirm
   const startScreen = document.querySelector("#start-screen");
-  const startButton = document.querySelector("#start-button");
   if (startScreen) startScreen.setAttribute("visible", "false");
-  if (startButton) startButton.setAttribute("visible", "false");
 
   // Zeige die Frage
-  document.querySelector("#question").setAttribute("visible", "true");
+  const question = document.querySelector("#question");
+  question.setAttribute("visible", "true");
 
   // Zeige die Transportmittel
   document.querySelector("#fahrrad").setAttribute("visible", "true");
