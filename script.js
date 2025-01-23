@@ -1,11 +1,21 @@
+// Hinzufügen eines Event Listeners für den Startbildschirm
+document.addEventListener("DOMContentLoaded", () => {
+  const startScreen = document.querySelector("#start-screen");
+
+  // Klick-Event für den Startbildschirm hinzufügen
+  startScreen.addEventListener("click", startQuiz);
+});
+
 // Funktion zum Starten des Spiels
 function startQuiz() {
   console.log("Spiel wird gestartet...");
 
   // Versteckt den Startbildschirm
   const startScreen = document.querySelector("#start-screen");
-  if (startScreen) startScreen.setAttribute("visible", "false");
+  startScreen.setAttribute("visible", "false");
 
+  // Die folgenden Elemente bleiben vorerst irrelevant
+  /*
   // Zeigt die Frage
   const question = document.querySelector("#question");
   question.setAttribute("visible", "true");
@@ -14,9 +24,12 @@ function startQuiz() {
   document.querySelector("#fahrrad").setAttribute("visible", "true");
   document.querySelector("#oepnv").setAttribute("visible", "true");
   document.querySelector("#auto").setAttribute("visible", "true");
+  */
 }
 
 // Funktion zur Verarbeitung der Auswahl einer Option
+// Diese Funktion ist vorerst auskommentiert
+/*
 function selectOption(option, co2Value) {
   console.log(`Option ${option} wurde ausgewählt mit CO₂-Wert: ${co2Value}`);
 
@@ -28,3 +41,4 @@ function selectOption(option, co2Value) {
   );
   feedback.setAttribute("visible", "true");
 }
+*/

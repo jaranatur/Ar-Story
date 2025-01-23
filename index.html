@@ -25,13 +25,14 @@
         <a-entity
           id="start-screen"
           geometry="primitive: plane; height: 1.5; width: 2"
-          material="color: blue; opacity: 0.9"
+          material="color: #c6d9c9; opacity: 0.9" <!-- Hier die neue Farbe -->
           position="0 1 0"
           text="value: Berechne deinen CO₂-Ausstoß!\nDrücke hier, um zu starten.; color: white; align: center; wrapCount: 25; font: mozillavr"
-          onclick="startQuiz()"
         ></a-entity>
 
         <!-- Frage: Wie kommst du zur Uni? -->
+        <!-- Auskommentiert, da irrelevant für den Startbildschirm -->
+        <!--
         <a-entity
           id="question"
           geometry="primitive: plane; height: 0.7; width: 2"
@@ -40,8 +41,11 @@
           text="value: Wie kommst du zur Uni?; color: black; align: center; wrapCount: 30; font: mozillavr"
           visible="false"
         ></a-entity>
+        -->
 
         <!-- Fahrradmodell -->
+        <!-- Auskommentiert, da irrelevant für den Startbildschirm -->
+        <!--
         <a-entity
           id="fahrrad"
           position="-1 0.5 0"
@@ -50,8 +54,11 @@
           visible="false"
           onclick="selectOption('Fahrrad', 0)"
         ></a-entity>
+        -->
 
         <!-- Bus/ÖPNV -->
+        <!-- Auskommentiert, da irrelevant für den Startbildschirm -->
+        <!--
         <a-entity
           id="oepnv"
           position="0 0.5 0"
@@ -61,8 +68,11 @@
           visible="false"
           onclick="selectOption('Bus/ÖPNV', 0.5)"
         ></a-entity>
+        -->
 
         <!-- Auto -->
+        <!-- Auskommentiert, da irrelevant für den Startbildschirm -->
+        <!--
         <a-entity
           id="auto"
           position="1 0.5 0"
@@ -72,14 +82,18 @@
           visible="false"
           onclick="selectOption('Auto', 2.5)"
         ></a-entity>
+        -->
 
         <!-- Feedback -->
+        <!-- Auskommentiert, da irrelevant für den Startbildschirm -->
+        <!--
         <a-entity
           id="feedback"
           position="0 1.5 0"
           text="value: Wähle eine Option, um deinen CO₂-Ausstoß zu sehen.; color: black; align: center;"
           visible="false"
         ></a-entity>
+        -->
       </a-marker>
     </a-scene>
 
