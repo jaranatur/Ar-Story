@@ -11,33 +11,63 @@
         margin: 0;
         overflow: hidden;
       }
+
+      /* Start-Screen */
+      #start-screen {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        z-index: 10;
+      }
+
+      #start-screen button {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+
+      /* Leinwand für die Frage */
+      .question-board {
+        width: 2.5;
+        height: 1;
+        color: white;
+        background: rgba(0, 0, 0, 0.7);
+      }
     </style>
   </head>
   <body>
+    <!-- A-Frame Szene -->
     <a-scene embedded arjs>
       <!-- Kamera -->
       <a-entity camera></a-entity>
 
       <!-- Hiro-Marker -->
       <a-marker preset="hiro">
-        <!-- Startbildschirm -->
+        <!-- Start-Screen -->
         <a-entity
-          id="start-screen"
-          geometry="primitive: plane; height: 1; width: 2"
-          material="color: #ffffff; opacity: 0.9"
+          id="start-board"
+          geometry="primitive: plane; height: 1; width: 2.5"
+          material="color: #000000; opacity: 0.8"
           position="0 1 0"
-          text="value: Berechne deinen CO₂-Ausstoß!\nDrücke Start, um das Spiel zu beginnen.; color: black; align: center; wrapCount: 20"
-          onclick="startQuiz()"
+          text="value: Berechne deinen CO₂-Ausstoß!; color: white; align: center; width: 4"
         ></a-entity>
-
-        <!-- Frage Leinwand -->
         <a-entity
-          id="question-screen"
-          geometry="primitive: plane; height: 1; width: 2"
-          material="color: #f5f5f5; opacity: 0.9"
-          position="0 1 0"
-          text="value: Wie kommst du zur Uni?; color: black; align: center; wrapCount: 20"
-          visible="false"
+          id="start-button"
+          geometry="primitive: plane; height: 0.5; width: 1"
+          material="color: #007bff"
+          position="0 0.5 0"
+          text="value: Start; color: white; align: center; width: 2"
+          onclick="startQuiz()"
         ></a-entity>
 
         <!-- Fahrradmodell -->
@@ -47,6 +77,7 @@
           gltf-model="models/bike/scene.gltf"
           scale="2 2 2"
           visible="false"
+          event-set__click="material.color: green"
           onclick="selectOption('Fahrrad', 0)"
         ></a-entity>
 
@@ -57,6 +88,7 @@
           text="value: ÖPNV; color: yellow; align: center;"
           scale="2 2 2"
           visible="false"
+          event-set__click="material.color: blue"
           onclick="selectOption('ÖPNV', 0.5)"
         ></a-entity>
 
@@ -67,11 +99,56 @@
           text="value: Auto; color: red; align: center;"
           scale="2 2 2"
           visible="false"
+          event-set__click="material.color: red"
           onclick="selectOption('Auto', 2.5)"
+        ></a-entity>
+
+        <!-- Feedback -->
+        <a-entity
+          id="feedback"
+          position="0 1.5 0"
+          text="value: Wähle eine Option, um deinen CO₂-Ausstoß zu sehen.; color: black; align: center;"
+          visible="false"
         ></a-entity>
       </a-marker>
     </a-scene>
 
-    <script src="script.js"></script>
+    <script>
+      // Funktion zum Starten des Quiz
+      function startQuiz() {
+        // Verstecke den Start-Screen
+        document.querySelector("#start-board").setAttribute("visible", "false");
+        document.querySelector("#start-button").setAttribute("visible", "false");
+
+        // Zeige die Transportmittel-Optionen
+        document.querySelector("#fahrrad").setAttribute("visible", "true");
+        document.querySelector("#oepnv").setAttribute("visible", "true");
+        document.querySelector("#auto").setAttribute("visible", "true");
+
+        // Zeige Feedback
+        document.querySelector("#feedback").setAttribute("visible", "true");
+      }
+
+      // Funktion zur Verarbeitung der Auswahl einer Option
+      function selectOption(option, co2Value) {
+        console.log(`Option ${option} wurde ausgewählt mit CO₂-Wert: ${co2Value}`);
+
+        const feedback = document.querySelector("#feedback");
+        feedback.setAttribute(
+          "text",
+          `value: Du hast ${option} gewählt. CO₂-Ausstoß: ${co2Value} kg.; color: black; align: center;`
+        );
+      }
+
+      // Touch- und Click-Listener zur Sicherheit hinzufügen
+      document.querySelectorAll("a-entity").forEach((entity) => {
+        entity.addEventListener("click", (e) => {
+          console.log(`Klick erkannt auf: ${e.target.id}`);
+        });
+        entity.addEventListener("touchstart", (e) => {
+          console.log(`Touch erkannt auf: ${e.target.id}`);
+        });
+      });
+    </script>
   </body>
 </html>
