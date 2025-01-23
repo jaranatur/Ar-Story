@@ -1,29 +1,31 @@
-// Hinzufügen eines Event Listeners für den START-Button
-document.addEventListener("DOMContentLoaded", () => {
-  const startButton = document.querySelector("#start-button");
+<script>
+  // Sicherstellen, dass die Szene vollständig geladen ist, bevor Event-Listener hinzugefügt werden
+  document.addEventListener("DOMContentLoaded", () => {
+    // Begrüßungstext und Erklärungstext
+    const startScreen = document.querySelector("#start-screen");
+    const question = document.querySelector("#question");
 
-  // Klick-Event für den START-Button hinzufügen
-  startButton.addEventListener("click", startQuiz);
-});
+    // Event-Listener für "Klicke HIER"
+    const clickableText = document.querySelector("#clickable-text");
+    clickableText.addEventListener("click", () => {
+      // Begrüßungstext ausblenden
+      startScreen.setAttribute("visible", "false");
 
-// Funktion zum Starten des Spiels
-function startQuiz() {
-  console.log("Spiel wird gestartet...");
+      // Erste Frage anzeigen
+      question.setAttribute("visible", "true");
+    });
 
-  // Versteckt den Startbildschirm
-  const startScreen = document.querySelector("#start-screen");
-  startScreen.setAttribute("visible", "false");
+    // Event-Listener für Antwortoptionen
+    document.querySelector("#bike-option").addEventListener("click", () => {
+      alert("Du hast Fahrrad gewählt!");
+    });
 
-  // Die folgenden Elemente bleiben vorerst irrelevant
-  /*
-  // Zeigt die Frage
-  const question = document.querySelector("#question");
-  question.setAttribute("visible", "true");
+    document.querySelector("#bus-option").addEventListener("click", () => {
+      alert("Du hast Bus gewählt!");
+    });
 
-  // Zeigt die Transportmittel
-  document.querySelector("#fahrrad").setAttribute("visible", "true");
-  document.querySelector("#oepnv").setAttribute("visible", "true");
-  document.querySelector("#auto").setAttribute("visible", "true");
-  */
-}
-
+    document.querySelector("#car-option").addEventListener("click", () => {
+      alert("Du hast Auto gewählt!");
+    });
+  });
+</script>
